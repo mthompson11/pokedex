@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if object %}
+    <h1>Edit <span class="teal-text">{{ object.name }}</span></h1>
+{% else %}
+    <h1>Catch a Pokemon</h1>
+{% endif %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    </table>
+    {% if object %}
+        <input type="submit" value="Update" class="btn">
+    {% else %}
+        <input type="submit" value="Catch!" class="btn">
+    {% endif %}
+</form>
+<script>
+    const typeEl = document.getElementById('id_type')
+    M.FormSelect.init(typeEl)
+</script>
+
+{% endblock %}
